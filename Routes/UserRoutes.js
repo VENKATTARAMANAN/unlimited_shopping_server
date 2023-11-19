@@ -31,7 +31,7 @@ router.post("/signup", async (req, res) => {
       from: `${process.env.MAIL_ID}`,
       to: `${req.body.email}`,
       subject: "URL shortner account verification",
-      text: `Click the link to verify your account : https://unlimited-shopping-server.vercel.app/acc-email-verify/${user._id.toString()}`,
+      text: `Click the link to verify your account : http://localhost:3000/acc-email-verify/${user._id.toString()}`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
