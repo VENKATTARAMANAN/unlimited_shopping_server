@@ -56,6 +56,7 @@ router.post("/signup", async (req, res) => {
 router.post("/signin",async(req,res)=>{
   try {
     const user = await Users.findOne({ email: req.body.email });
+    console.log('user::: ', user);
     if(user.inActive === true){
       if (!user) {
         return res.status(400).json({ data: "Invalid Email" });
