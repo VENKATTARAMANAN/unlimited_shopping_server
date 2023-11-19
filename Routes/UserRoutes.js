@@ -56,11 +56,10 @@ router.post("/signup", async (req, res) => {
 router.post("/signin",async(req,res)=>{
   try {
     const user = await Users.findOne({ email: req.body.email });
-    console.log('user::: ', user);
+    if (!user) {
+      return res.status(400).json({ data: "Invalid Email" });
+    }
     if(user.inActive === true){
-      if (!user) {
-        return res.status(400).json({ data: "Invalid Email" });
-      }
       const validatePass = await bcrypt.compare(req.body.password, user.password);
       if(!validatePass){
           return res.status(400).json({data:"Invalid password"});
