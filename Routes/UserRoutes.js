@@ -21,8 +21,8 @@ router.post("/signup", async (req, res) => {
       password: hashedPassword,
       inActive: false,
     }).save();
-    res.status(201).json({ data: "Successfully Registered" });
-    const transporter = nodemailer.createTransport({
+
+    const transporter = await nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.MAIL_ID,
@@ -35,7 +35,8 @@ router.post("/signup", async (req, res) => {
       subject: "URL shortner account verification",
       text: `Click the link to verify your account : http://localhost:3000/acc-email-verify/${data._id.toString()}`,
     };
-    transporter.sendMail(mailOptions, function (error, info) {
+    console.log('mailOptions::: ', mailOptions);
+    await transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
       } else {
@@ -46,6 +47,7 @@ router.post("/signup", async (req, res) => {
         });
       }
     })}
+    res.status(201).json({ data: "Successfully Registered" });
   } catch (error) {
     console.log(error);
   }
