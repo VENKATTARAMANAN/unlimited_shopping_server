@@ -22,7 +22,6 @@ router.get("/alldata", async (req, res) => {
 router.post("/add-wishlist", async (req, res) => {
   try {
     const { token, data } = req.body;
-    console.log('data::: ', data);
     const userid = await decodeJwtToken(token);
     const value = {
       userid: userid.id,
