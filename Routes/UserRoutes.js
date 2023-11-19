@@ -31,8 +31,8 @@ router.post("/signup", async (req, res) => {
     var mailOptions = {
       from: `${process.env.MAIL_ID}`,
       to: `${req.body.email}`,
-      subject: "URL shortner account verification",
-      text: `Click the link to verify your account : http://localhost:3000/acc-email-verify/${data._id.toString()}`,
+      subject: "Unlimited shopping  account verification",
+      text: `Click the link to verify your account : ${process.env.UI_URL}/acc-email-verify/${data._id.toString()}`,
     };
     console.log('mailOptions::: ', mailOptions);
     await transporter.sendMail(mailOptions, function (error, info) {

@@ -34,7 +34,7 @@ router.post("/forpass-verify-mail", async (req, res) => {
       var mailOptions = {
         from: `${process.env.MAIL_ID}`,
         to: `${verify.email}`,
-        subject: "Reset expense tracker site password",
+        subject: "Unlimited shopping site password",
         text: `Please use the CAPTCHA CODE to reset your Password : ${randstring}`,
       };
 
