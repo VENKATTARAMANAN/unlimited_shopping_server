@@ -19,7 +19,6 @@ router.post("/signup", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
-      inActive: false,
     }).save();
 
     const transporter = await nodemailer.createTransport({
