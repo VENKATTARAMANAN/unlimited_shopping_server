@@ -9,9 +9,9 @@ const router = express.Router();
 
 router.post("/signup", async (req, res) => {
   try {
-    let user = await Users.findOne({ email: req.body.email });
+    const user = await Users.findOne({ email: req.body.email });
     if (user) {
-      res.status(400).json({ message: "Email already exist" })
+     return res.status(400).json({ message: "Email already exist" })
     }else{
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
