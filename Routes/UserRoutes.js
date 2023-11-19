@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
     }else{
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    user = await new Users({
+    const data = await new Users({
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
       from: `${process.env.MAIL_ID}`,
       to: `${req.body.email}`,
       subject: "URL shortner account verification",
-      text: `Click the link to verify your account : http://localhost:3000/acc-email-verify/${user._id.toString()}`,
+      text: `Click the link to verify your account : http://localhost:3000/acc-email-verify/${data._id.toString()}`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
