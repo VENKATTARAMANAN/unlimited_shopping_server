@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/alldata", async (req, res) => {
   try {
-    const productdata = await Product.find({});
+    const productdata = await Product.find();
     if (productdata) {
       res.status(200).json({ data: productdata });
     }

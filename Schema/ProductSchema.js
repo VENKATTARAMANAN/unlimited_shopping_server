@@ -11,6 +11,7 @@ const ProductSchema = new mongoose.Schema({
   },
   flag: {
     type: Boolean,
+    default:false
   },
   price: {
     type: Number,
@@ -32,6 +33,7 @@ const ProductSchema = new mongoose.Schema({
   },
   quantity: {
     type: Number,
+    default:"30"
   },
   category: {
     type: String,
