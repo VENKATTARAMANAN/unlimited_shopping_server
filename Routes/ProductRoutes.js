@@ -15,7 +15,6 @@ router.get("/alldata", async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(400).json({ data: "Internal server error" });
   }
 });
 
