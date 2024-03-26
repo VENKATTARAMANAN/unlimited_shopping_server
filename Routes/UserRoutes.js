@@ -34,7 +34,6 @@ router.post("/signup", async (req, res) => {
       subject: "Unlimited shopping  account verification",
       text: `Click the link to verify your account : ${process.env.UI_URL}/acc-email-verify/${data._id.toString()}`,
     };
-    console.log('mailOptions::: ', mailOptions);
     await transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
